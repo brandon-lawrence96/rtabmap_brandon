@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <!-- gazebo launch with pre-built world including the spawning of the robot and its URDF information -->
+    <include file ="$(find autonomous_robots)/launch/my_world.launch"/>
+
+    <!-- node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard">
+    </node> -->
+
+    <!-- publisher transform (TFs) of all joints and their inbetween relations -->
+    <node pkg= "robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="50.0"/>
+    </node>
+
+    <node pkg= "joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher">
+    <param name = "use_gui" value="false" />
+    </node>
+
+    <!--<node name="rviz" pkg="rviz" type="rviz" args="-d $(find autonomous_rack)/launch/default_robot_model_test.rviz"/> -->
+
+</launch>
